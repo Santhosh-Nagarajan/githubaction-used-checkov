@@ -20,6 +20,10 @@ jobs:
         with:
           directory: example/examplea
           framework: terraform 
+      - name : check this file
+        run: checkov -f main.tf
+
+        
 
 
     

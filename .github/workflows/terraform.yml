@@ -19,7 +19,10 @@ jobs:
         uses: bridgecrewio/checkov-action@master
         with:
           directory: example/examplea
-          framework: terraform 
+          framework: terraform
+      - name : install checkov
+        run: pip3 install checkov 
+        
       - name : check this file
         run: checkov -f main.tf
 

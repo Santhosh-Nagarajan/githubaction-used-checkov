@@ -1,0 +1,34 @@
+name: Checkov and Terraform
+
+on:
+  push:
+    branches:
+      - master
+    
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 1.0.3   # Specify the desired Terraform version
+
+    - name: Terraform Init
+      run: sudo terraform init
+      
+    - name: Terraform Format
+      run: sudo terraform fmt
+      
+    - name: Terraform Validation
+      run: sudo terraform validate
+      
+    - name: Terraform Plan
+      run: sudo terraform plan
+
+    - name: Terraform Apply
+      run: sudo terraform apply --auto-approve

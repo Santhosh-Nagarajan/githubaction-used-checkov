@@ -4,56 +4,49 @@ on:
   push:
     branches:
       - master
+
 jobs:
   build:
-
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Set up Python 3.8
         uses: actions/setup-python@v4
         with:
           python-version: 3.8
-      # - name: Test with Checkov
-      #   id: checkov
-      #   uses: bridgecrewio/checkov-action@master
-      #   with:
-      #     directory: example/examplea
-      #     framework: terraform
-      - name : install checkov
+
+      - name: Install Checkov
         run: pip3 install checkov 
-        
-      - name : check this file
+
+      - name: Check Terraform with Checkov
         run: checkov -f main.tf
-
-        
-
-
-    
 
   terraform-job2:
     runs-on: ubuntu-latest
-
+    needs: build
+    if: failure()
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Terraform
-      uses: hashicorp/setup-terraform@v1
-      with:
-        terraform_version: 1.0.3   # Specify the desired Terraform version
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.0.3   # Specify the desired Terraform version
 
-    - name: Terraform Init
-      run: sudo terraform init
+      - name: Terraform Init
+        run: terraform init
       
-    - name: Terraform Format
-      run: sudo terraform fmt
+      - name: Terraform Format
+        run: terraform fmt
       
-    - name: Terraform Validation
-      run: sudo terraform validate
+      - name: Terraform Validation
+        run: terraform validate
       
-    - name: Terraform Plan
-      run: sudo terraform plan
+      - name: Terraform Plan
+        run: terraform plan
 
-    - name: Terraform Apply
-      run: sudo terraform apply --auto-approve
+      - name: Terraform Apply
+        run: terraform apply --auto-approve

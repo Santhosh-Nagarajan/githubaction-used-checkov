@@ -37,11 +37,14 @@ jobs:
       - name: Commit and Push Checkov Results
         run: |
             git config --global user.email "nsmgbros001@gmail.com"
-            git config --global user.name "GitHub Actions"
-            git add checkov_result/
-            git commit -m "Add Checkov results"
-            git remote set-url origin "https://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@github.com/Santhosh-Nagarajan/githubaction-used-checkov.git"
-            git push -u origin master
+            git config --global user.name "Santhosh-Nagarajan"
+            git clone https://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@github.com/Santhosh-Nagarajan/githubaction-used-checkov.git
+            ls -a githubaction-used-checkov/
+            
+            # git add checkov_result/
+            # git commit -m "Add Checkov results"
+            # git remote set-url origin "https://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@github.com/Santhosh-Nagarajan/githubaction-used-checkov.git"
+            # git push -u origin master
        
 
 

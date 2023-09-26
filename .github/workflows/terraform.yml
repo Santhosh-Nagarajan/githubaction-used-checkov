@@ -42,8 +42,8 @@ jobs:
             cp -r checkov_result/*.json githubaction-used-checkov/ 
             cd githubaction-used-checkov
             ls
+            git push
             
-            ls -a githubaction-used-checkov/
             
             # git add checkov_result/
             # git commit -m "Add Checkov results"

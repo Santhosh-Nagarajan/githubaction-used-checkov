@@ -42,7 +42,7 @@ jobs:
             cp -r checkov_result/*.json githubaction-used-checkov/ 
             cd githubaction-used-checkov
             ls
-            git push
+            git push -u origin master
             
             
             # git add checkov_result/

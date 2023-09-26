@@ -1,61 +1,74 @@
-name: Checkov and Terraform
-
-on:
-  push:
-    branches:
-      - master
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.8
-
-      - name: Install Checkov
-        run: pip3 install checkov 
-
-      - name: Check Terraform with Checkov
-        run: checkov -f main.tf
-        
-      - name: Check Terraform with Checkov Success
-        run: echo "Checkov completed successfully."
-
-      - name: Send Failure Notification
-        if: failure()
-        run: echo "The 'build' job failed."
+resource "google_compute_instance" "default" {
+  name         = var.instance-name
+  machine_type = var.machine-type
+  zone         = var.zone
 
 
+  tags = ["foo", "bar"]
 
-  terraform-job2:
-    runs-on: ubuntu-latest
-    needs: build
-    # if: failure()
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+  boot_disk {
+    initialize_params {
+      size   = var.size
+      image  = var.image-name
+      labels = var.labels
+    }
+    kms_key_self_link = "key-link"
 
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_version: 1.0.3   # Specify the desired Terraform version
+  }
 
-      - name: Terraform Init
-        run: terraform init
-      
-      - name: Terraform Format
-        run: terraform fmt
-      
-      - name: Terraform Validation
-        run: terraform validate
-      
-      - name: Terraform Plan
-        run: terraform plan
+  shielded_instance_config {
+    enable_integrity_monitoring = true
+    enable_vtpm                 = true
 
-      - name: Terraform Apply
-        run: terraform apply --auto-approve
+  }
+
+  network_interface {
+    network    = var.network
+    subnetwork = var.subnetwork
+  }
+
+  metadata = {
+    block-project-ssh-keys = true
+  }
+
+
+  metadata_startup_script = "echo hi > /test.txt"
+
+  service_account {
+    scopes = ["userinfo-email", "compute-ro", "storage-ro"]
+    email  = "[PROJECT_NUMBER]-compute@developer.gserviceaccount.com"
+  }
+
+
+
+
+
+
+
+}
+
+# Create HTTP firewall rule
+resource "google_compute_firewall" "http_firewall" {
+  name    = "http-firewall"
+  network = google_compute_instance.default.network_interface
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80,443"]
+  }
+
+  source_ranges = var.firewal-source-range
+}
+
+# Create SSH firewall rule
+resource "google_compute_firewall" "ssh_firewall" {
+  name    = "ssh-firewall"
+  network = google_compute_instance.default.id
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22, ${var.port}"]
+  }
+
+  source_ranges = var.firewall-ssh-source-range
+}

@@ -32,7 +32,7 @@ jobs:
         run: echo "The 'build' job failed."
       
       - name: List
-        run: ls 
+        run: ls  
 
       - name: Commit and Push Checkov Results
         run: |

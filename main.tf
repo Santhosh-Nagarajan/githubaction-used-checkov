@@ -3,53 +3,72 @@ resource "google_compute_instance" "default" {
   machine_type = var.machine-type
   zone         = var.zone
 
+
   tags = ["foo", "bar"]
 
   boot_disk {
     initialize_params {
-      size  = var.size
-      image = var.image-name
-      labels = {
-        my_label = "value"
-      }
+      size   = var.size
+      image  = var.image-name
+      labels = var.labels
     }
+    kms_key_self_link = "key-link"
+
+  }
+
+  shielded_instance_config {
+    enable_integrity_monitoring = true
+    enable_vtpm                 = true
+
   }
 
   network_interface {
-    network    = "default"
-    access_config {}
+    network    = var.network
+    subnetwork = var.subnetwork
   }
-  metadata_startup_script = var.startup-script
+
+  metadata = {
+    block-project-ssh-keys = true
+  }
+
+
+  metadata_startup_script = "echo hi > /test.txt"
 
   service_account {
-    # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
-    email  = var.email
-    scopes = ["cloud-platform"]
+    scopes = ["userinfo-email", "compute-ro", "storage-ro"]
+    email  = "[PROJECT_NUMBER]-compute@developer.gserviceaccount.com"
   }
+
+
+
+
+
+
+
 }
 
 # Create HTTP firewall rule
 resource "google_compute_firewall" "http_firewall" {
-  name    = google_compute_instance.default.name
-  network = "default"
+  name    = "http-firewall"
+  network = google_compute_instance.default.network_interface
 
   allow {
     protocol = "tcp"
-    ports    = ["80", "443"]
+    ports    = ["80,443"]
   }
 
-  source_ranges = ["0.0.0.0/0"]
+  source_ranges = var.firewal-source-range
 }
 
 # Create SSH firewall rule
 resource "google_compute_firewall" "ssh_firewall" {
-  name    = "firewallname1"
-  network = "default"
+  name    = "ssh-firewall"
+  network = google_compute_instance.default.id
 
   allow {
     protocol = "tcp"
-    ports    = ["22", "8080"]
+    ports    = ["22, ${var.port}"]
   }
 
-  source_ranges = ["0.0.0.0/0"]
+  source_ranges = var.firewall-ssh-source-range
 }

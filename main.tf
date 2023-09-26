@@ -54,7 +54,7 @@ resource "google_compute_firewall" "http_firewall" {
 
   allow {
     protocol = "tcp"
-    ports    = ["80,443"]
+    ports    = ["80",,443"]
   }
 
   source_ranges = var.firewal-source-range

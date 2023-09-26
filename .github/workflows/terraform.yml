@@ -22,10 +22,6 @@ jobs:
 
       - name: Check Terraform with Checkov
         run: checkov -f main.tf --quiet -o json --output-file-path checkov_result/ 
-
-      
-      - name: List
-        run: ls 
         
       - name: Check Terraform with Checkov Success
         run: echo "Checkov completed successfully."
@@ -36,6 +32,15 @@ jobs:
       
       - name: List
         run: ls 
+
+      - name: Commit and Push Checkov Results
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add checkov_result/
+          git commit -m "Add Checkov results"
+          git push
+
 
 
   terraform-job2:

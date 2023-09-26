@@ -22,9 +22,6 @@ jobs:
 
       - name: Check Terraform with Checkov
         run: checkov -f main.tf
-
-      - name: Check Terraform with Checkov
-        run: Terraform Validate
         
       - name: Check Terraform with Checkov Success
         run: echo "Checkov completed successfully."

@@ -24,7 +24,7 @@ jobs:
         run: checkov -f main.tf
 
       - name: Check Terraform with Checkov
-        run: checkov -f main.tf
+        run: Terraform Validate
 
   terraform-job2:
     runs-on: ubuntu-latest

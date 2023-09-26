@@ -33,7 +33,9 @@ jobs:
       - name: Send Failure Notification
         if: failure()
         run: echo "The 'build' job failed."
-
+      
+      - name: List
+        run: ls 
 
 
   terraform-job2:

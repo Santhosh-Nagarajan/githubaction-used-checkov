@@ -25,6 +25,15 @@ jobs:
 
       - name: Check Terraform with Checkov
         run: Terraform Validate
+        
+      - name: Check Terraform with Checkov Success
+        run: echo "Checkov completed successfully."
+
+      - name: Send Failure Notification
+        if: failure()
+        run: echo "The 'build' job failed."
+
+
 
   terraform-job2:
     runs-on: ubuntu-latest

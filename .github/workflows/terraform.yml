@@ -40,11 +40,8 @@ jobs:
             git config --global user.name "GitHub Actions"
             git add checkov_result/
             git commit -m "Add Checkov results"
-            git remote set-url origin "https://$GH_TOKEN@github.com/Santhosh-Nagarajan/githubaction-used-checkov.git"
+            git remote set-url origin "https://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@github.com/Santhosh-Nagarajan/githubaction-used-checkov.git"
             git push -u origin master
-        env:
-            GH_TOKEN: ${{ secrets.GH_TOKEN }}
-       
        
 
 

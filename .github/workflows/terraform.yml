@@ -5,6 +5,7 @@ on:
     branches:
       - master
 
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -35,11 +36,15 @@ jobs:
 
       - name: Commit and Push Checkov Results
         run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git add checkov_result/
-          git commit -m "Add Checkov results"
-          git push
+              git config --global user.email "actions@github.com"
+              git config --global user.name "GitHub Actions"
+              git add checkov_result/
+              git commit -m "Add Checkov results"
+              git remote set-url origin "https://$GH_TOKEN@github.com/Santhosh-Nagarajan/githubaction-used-checkov.git"
+              git push
+       
+        env:
+           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
 
 

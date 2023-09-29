@@ -33,6 +33,24 @@ jobs:
       
       - name: List
         run: ls  
+
+      - name: Script used 
+        run: |
+
+          # Replace placeholders with actual values
+          TOKEN=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
+          REPO_OWNER=Santhosh-Nagarajan
+          REPO_NAME=githubaction-used-checkov
+          FILE_PATH=checkov_result/new.json
+
+          # Get the contents of a file using the GitHub API  
+          curl -H "Authorization: token $TOKEN" \
+          -H "Accept: application/vnd.github.v3.raw" \
+          -o output.json \
+          -L "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/contents/$FILE_PATH"
+
+
+    
  
 
   terraform-job2:

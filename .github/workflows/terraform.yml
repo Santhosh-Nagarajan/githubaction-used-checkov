@@ -33,28 +33,7 @@ jobs:
       
       - name: List
         run: ls  
-
-      - name: Commit and Push Checkov Results
-        run: |
-            git config --global user.email "nsmgbros001@gmail.com"
-            git config --global user.name "Santhosh-Nagarajan"
-            git clone https://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@github.com/Santhosh-Nagarajan/githubaction-used-checkov.git
-            cp -r checkov_result/*.json githubaction-used-checkov/ 
-            cd githubaction-used-checkov
-            ls
-            git remote -v
-            git add .
-            git commit -m"demo"
-            git push -u origin master
-            
-            
-            # git add checkov_result/
-            # git commit -m "Add Checkov results"
-            # git remote set-url origin "https://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@github.com/Santhosh-Nagarajan/githubaction-used-checkov.git"
-            # git push -u origin master
-       
-
-
+ 
 
   terraform-job2:
     runs-on: ubuntu-latest

@@ -38,7 +38,7 @@ jobs:
 
       - name: Upload checkov_result/ to GitHub
         run: |
-              curl -H "Authorization: token ${{ secrets.GH_TOKEN }} " \
+              curl -H "Authorization:${{ secrets.GH_TOKEN }} " \
               -H "Content-Type: application/octet-stream" \
               --data-binary @checkov_result/results_json.json \
               -X POST "https://api.github.com/repos/Santhosh-Nagarajan/githubaction-used-checkov/contents/checkov_result/results_json.json"

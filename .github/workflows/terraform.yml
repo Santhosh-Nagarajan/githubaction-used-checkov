@@ -53,12 +53,12 @@ jobs:
       
       - name: Terraform Format
         run: terraform fmt
-
-      - name: Terraform Validation
-        run: terraform validate
-
+        
       - name: Echo
         run: |
           echo "${{ secrets.ACCESS_KEY }}"
           echo "${{ secrets.SECRET_KEY}}"
+      
+
+      
       

@@ -34,6 +34,7 @@ resource "google_compute_instance" "default" {
 
   metadata_startup_script = "echo hi > /test.txt"
 
+
   service_account {
     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
     email  = "[PROJECT_NUMBER]-compute@developer.gserviceaccount.com"

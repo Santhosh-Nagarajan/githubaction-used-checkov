@@ -55,22 +55,22 @@ jobs:
       - name: Terraform Format
         run: terraform fmt
 
-
-      - name: output File PUsh
+      - name: Output File Push
         run: |
-              git checkout -b output
-              git branch
-              ls
-              git config --global user.email "nsmgbros001@gmail.com"
-              git config --global user.name "Santhosh-Nagarajan"
-              rm -r *.tf terraform.tfvars .terraform  
-              touch out.txt
-              git add .
-              git commit -m "create output file"
-              git remote -v
-              git push -u origin output
-              
-                      
+           git checkout -b output
+           git branch
+           ls
+           git config --global user.email "nsmgbros001@gmail.com"
+           git config --global user.name "Santhosh-Nagarajan"
+           rm -r *.tf terraform.tfvars .terraform  
+           touch out.txt
+           git add .
+           git commit -m "create output file"
+           git remote -v
+           git push -u origin output
+        
+        env:
+            GH_TOKEN: ${{ secrets.YOUR_SECRET_NAME }}
 
-      
+     
       

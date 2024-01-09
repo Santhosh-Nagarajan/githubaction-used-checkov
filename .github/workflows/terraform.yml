@@ -59,6 +59,7 @@ jobs:
       - name: output File PUsh
         run: |
               git checkout -b output
+              git branch
               ls
               
               rm -r *.tf terraform.tfvars .terraform

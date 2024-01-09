@@ -62,7 +62,7 @@ jobs:
               ls
               
               rm -r *.tf terraform.tfvars .terraform
-              echo"succcess"
+              
               touch out.txt
               git add .
               

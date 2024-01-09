@@ -60,10 +60,14 @@ jobs:
         run: |
               git checkout -b output
               ls
-              ll
-              rm -r *.tf terraform.tfvars .terraform 
+              
+              rm -r *.tf terraform.tfvars .terraform
+              echo"succcess"
+              touch out.txt
               git add .
+              echo"succcess"
               git commit -m "create output file"
+              echo"succcess"
               git push -u origin output
               
                       

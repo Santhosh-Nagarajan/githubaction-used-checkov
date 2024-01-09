@@ -67,7 +67,8 @@ jobs:
               touch out.txt
               git add .
               git commit -m "create output file"
-              git push --set-upstream origin output
+              git remote -v
+              git push -u origin output
               
                       
 

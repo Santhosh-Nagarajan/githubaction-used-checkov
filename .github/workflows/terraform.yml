@@ -61,16 +61,13 @@ jobs:
               git checkout -b output
               git branch
               ls
-              
-              rm -r *.tf terraform.tfvars .terraform
               git config --global user.email "nsmgbros001@gmail.com"
               git config --global user.name "Santhosh-Nagarajan"
+              rm -r *.tf terraform.tfvars .terraform  
               touch out.txt
               git add .
-              
               git commit -m "create output file"
-              
-              git push -u origin output
+              git push
               
                       
 

@@ -66,12 +66,11 @@ jobs:
            touch out.txt
            git add .
            git commit -m "create output file"
-           git remote set-url origin https://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@github.com/Santhosh-Nagarajan/githubaction-used-checkov.git
+           
            git remote -v
            git push -u origin output
         
-        env:
-            GH_TOKEN: ${{ secrets.YOUR_SECRET_NAME }}
+        
 
      
       

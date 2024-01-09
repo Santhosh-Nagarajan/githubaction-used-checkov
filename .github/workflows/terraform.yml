@@ -23,7 +23,6 @@ jobs:
 
       - name: Check Terraform with Checkov
         run: |
-            python3 a
             checkov -f main.tf --quiet -o json --output-file-path checkov_result/ 
         
       - name: Check Terraform with Checkov Success
@@ -55,12 +54,19 @@ jobs:
       
       - name: Terraform Format
         run: terraform fmt
-        
-      - name: Echo
+
+
+      - name: output File PUsh
         run: |
-          echo "${{ secrets.ACCESS_KEY }}"
-          echo "${{ secrets.SECRET_KEY}}"
-      
+              git checkout -b output
+              ls
+              ll
+              rm -r *.tf terraform.tfvars .terraform 
+              git add .
+              git commit -m "create output file"
+              git push -u origin output
+              
+                      
 
       
       

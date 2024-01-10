@@ -65,7 +65,7 @@ jobs:
            git config --global user.name "Santhosh-Nagarajan"
            
            rm -r *.tf terraform.tfvars .terraform .github/ .terraform.lock.hcl
-           touch outputs.txt
+           touch demo.txt
            
            git add .
            git commit -m "create output file"

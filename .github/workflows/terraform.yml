@@ -1,4 +1,4 @@
-name: Python application
+name: "Checkov Validate & Terrafom Validate"
 
 on:
   push:
@@ -61,7 +61,7 @@ jobs:
            git branch 
            ls
            
-           git config --global user.name "Santhosh-Nagarajan"
+           
            
            rm -r *.tf terraform.tfvars .terraform .github/ .terraform.lock.hcl
            touch out.txt

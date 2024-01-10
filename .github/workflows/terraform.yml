@@ -2,8 +2,8 @@ name: Checkov and Terraform
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master]
+      
 
 
 jobs:

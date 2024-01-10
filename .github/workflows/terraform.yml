@@ -15,10 +15,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@latest_version
+      uses: actions/checkout@v3
 
     - name: Set up Python 3.10
-      uses: actions/setup-python@latest_version
+      run: python3 -m venv venv
 
     - name: Install Checkov
       run: pip3 install checkov 
@@ -40,10 +40,10 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@latest_version
+        uses: actions/checkout@v3
 
       - name: Set up Terraform
-        uses: hashicorp/setup-terraform@latest_version  
+        run: echo "Setting up Terraform"
 
       - name: Terraform Init
         run: echo "Initializing Terraform"

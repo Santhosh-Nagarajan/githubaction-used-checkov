@@ -57,7 +57,7 @@ jobs:
       - name: Output File Push
         run: |
            echo "Creating output file"
-           git checkout -b outputs
+           git checkout -b outputss
            git branch 
            ls
            
@@ -65,10 +65,10 @@ jobs:
            git config --global user.name "Santhosh-Nagarajan"
            
            rm -r *.tf terraform.tfvars .terraform .github/ .terraform.lock.hcl
-           touch demo.txt
+           touch output.txt
            
            git add .
            git commit -m "create output file"
            git remote set-url origin https://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@github.com/Santhosh-Nagarajan/githubaction-used-checkov.git 
            git remote -v
-           git push -u origin outputs
+           git push -u origin outputss

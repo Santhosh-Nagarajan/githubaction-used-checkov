@@ -69,7 +69,7 @@ jobs:
 
               git remote set-url origin https://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@github.com/Santhosh-Nagarajan/githubaction-used-checkov.git
               git remote -v
-                 
+              git pull origin san
               git push -u origin san  # Explicitly pull changes from the remote 'san' branch
     
               

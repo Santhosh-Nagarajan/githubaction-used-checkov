@@ -69,5 +69,5 @@ jobs:
           git remote set-url origin https://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@github.com/Santhosh-Nagarajan/githubaction-used-checkov.git
           git remote -v
           git branch --set-upstream-to=origin/san san
-          git pull
+          
           git push origin san

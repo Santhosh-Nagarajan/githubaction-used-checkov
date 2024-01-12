@@ -66,14 +66,11 @@ jobs:
 
               git add .
               git commit -m "create output file"
-    
-              # Set the upstream branch to origin/san
-              git branch --set-upstream-to=origin/san san
 
               git remote set-url origin https://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@github.com/Santhosh-Nagarajan/githubaction-used-checkov.git
               git remote -v
+                 
+              git push -u origin san  # Explicitly pull changes from the remote 'san' branch
     
-              git pull origin san  # Explicitly pull changes from the remote 'san' branch
-    
-              git push origin san
+              
  

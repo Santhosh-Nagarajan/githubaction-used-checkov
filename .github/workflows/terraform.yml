@@ -53,7 +53,7 @@ jobs:
       - name: Output File Push
         run: |
               echo "Creating output file"
-              git checkout -B san || git checkout san  # Switch to the 'san' branch if it exists, or create it
+              git branch --delete san || git checkout -B san   # Switch to the 'san' branch if it exists, or create it
     
               git branch
               ls
@@ -71,7 +71,7 @@ jobs:
               git remote set-url origin https://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@github.com/Santhosh-Nagarajan/githubaction-used-checkov.git
               git remote -v
               
-              git push -u -f origin san  # Explicitly pull changes from the remote 'san' branch
+              git push -u origin san  # Explicitly pull changes from the remote 'san' branch
     
               
  

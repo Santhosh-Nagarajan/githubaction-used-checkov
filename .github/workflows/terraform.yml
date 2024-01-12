@@ -54,6 +54,7 @@ jobs:
         run: |
           echo "Creating output file"
           git checkout -B san || git checkout san  # Switch to the 'san' branch if it exists, or create it
+          git pull origin san --rebase
           git branch
           ls
 

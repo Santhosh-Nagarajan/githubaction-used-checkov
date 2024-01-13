@@ -53,7 +53,7 @@ jobs:
       - name: Output File Push
         run: |
               echo "Creating output file"
-              git push origin --delete output || git branch -b output 
+              git push origin --delete output || git checkout -b output
                 
     
               git branch

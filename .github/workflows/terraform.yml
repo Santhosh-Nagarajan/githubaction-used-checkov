@@ -42,7 +42,7 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
         with:
-          terraform_version: 1.0.3  # Specify the desired Terraform version
+          terraform_version: 1.6.6  # Specify the desired Terraform version
 
       - name: Terraform Init
         run: terraform init
@@ -55,7 +55,7 @@ jobs:
               echo "Creating output file"
               
               git push origin --delete output || git branch --all 
-              #git checkout -b output || git branch           
+              git checkout -b output || git branch           
     
               git branch
               ls

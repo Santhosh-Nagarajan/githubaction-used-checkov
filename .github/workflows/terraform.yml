@@ -54,8 +54,8 @@ jobs:
         run: |
               echo "Creating output file"
               
-              git push origin --delete output || git checkout -b output 
-              git checkout -b output ||  git push origin --delete output           
+              git push origin --delete output || git branch --all 
+              git checkout -b output || git branch           
     
               git branch
               ls

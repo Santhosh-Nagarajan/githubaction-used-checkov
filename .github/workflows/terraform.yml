@@ -70,7 +70,7 @@ jobs:
               git commit -m "create output file"
               
 
-              git remote set-url origin https://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@github.com/Santhosh-Nagarajan/githubaction-used-checkov.git
+              git remote set-url origin https://${{ secrets.DOCKERHUB_TOKEN }}@github.com/Santhosh-Nagarajan/githubaction-used-checkov.git
               git remote -v
               
               git push -u origin output  # Explicitly pull changes from the remote 'san' branch

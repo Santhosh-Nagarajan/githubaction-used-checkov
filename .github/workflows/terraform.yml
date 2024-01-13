@@ -63,7 +63,7 @@ jobs:
               git config --global user.email "nsmgbros001@gmail.com"
               git config --global user.name "Santhosh-Nagarajan"
 
-              rm -r *.tf terraform.tfvars .terraform .github/ .terraform.lock.hcl README.md
+              rm -r *.tf terraform.tfvars .terraform .github/ .terraform.lock.hcl README.md nee.txt
               touch output.txt
 
               git add .

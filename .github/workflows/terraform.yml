@@ -53,7 +53,8 @@ jobs:
       - name: Output File Push
         run: |
               echo "Creating output file"
-              git branch --track san || git branch -d san || git checkout -B san   # Switch to the 'san' branch if it exists, or create it
+              git branch --track san || git branch -d san || git push origin --delete san
+              git checkout -B san   
     
               git branch
               ls

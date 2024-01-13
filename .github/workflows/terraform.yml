@@ -53,7 +53,7 @@ jobs:
       - name: Output File Push
         run: |
               echo "Creating output file"
-              git push origin --delete output || git checkout -b output
+              git push origin --delete output || git checkout -b output 
                 
     
               git branch
@@ -69,10 +69,10 @@ jobs:
               git commit -m "create output file"
               
 
-              git remote set-url origin https://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@github.com/Santhosh-Nagarajan/githubaction-used-checkov.git
+              git remote set-url origin https://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@github.com/Santhosh-Nagarajan/githubaction-used-checkov.git
               git remote -v
               
-              git push -u origin san  # Explicitly pull changes from the remote 'san' branch
+              git push -u origin output  # Explicitly pull changes from the remote 'san' branch
     
               
  

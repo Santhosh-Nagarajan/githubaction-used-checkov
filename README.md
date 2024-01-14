@@ -1,1 +1,2 @@
-   # githubaction-used-checkov
+
+# githubaction-used-checkov

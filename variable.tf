@@ -1,37 +1,31 @@
-variable "project-id" {
+variable "project" {
   type        = string
   description = "Enter Your Project Id"
 }
 
 variable "region" {
   type        = string
-  description = "Enter Your Region"
+  description = "Enter Your region"
 }
 
 variable "zone" {
   type        = string
-  description = "Enter Your zone"
+  description = "Enter Your Zone"
 }
 
 variable "credential" {
   type        = string
-  description = "Enter your JSON file"
+  description = "Enter your credential file path"
 }
 
-variable "instance-name" {
+variable "service-name" {
   type        = string
-  description = "Enter Your Instance Name"
+  description = "Enter Your Service Name"
 }
 
-variable "machine-type" {
-  type        = string
-  description = "Enter Your Instance Machine Type"
-}
-
-
-variable "size" {
-  type        = string
-  description = "Enter Your Size"
+variable "port" {
+  type        = number
+  description = "Enter Your Port Number"
 }
 
 variable "image-name" {
@@ -39,12 +33,14 @@ variable "image-name" {
   description = "Enter Your Image Name"
 }
 
-variable "startup-script" {
+variable "env-name" {
   type        = string
-  description = "Enter Your Subnetwork"
+  description = "Enter Your Environment Variable Name"
 }
 
-variable "email" {
+variable "value" {
   type        = string
-  description = "Enter Your email"
+  description = "Enter Your Environment Variable Value"
 }
+
+

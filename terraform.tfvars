@@ -1,21 +1,17 @@
-project-id = "playground-s-11-db36c73c"
+project = "playground-s-11-72ef9072"
 
-region = "us-central1 (Iowa)"
+region = "us-central1"
 
-zone = "us-central1-a"
+zone = "us-central-a"
 
-credential = "playground-s-11-db36c73c-c8b50890c85a.json"
+credential = "creden.json"
 
+service-name = "my-first-service"
 
-instance-name = "test"
+port = 80
 
-machine-type = "e2-medium"
+image-name = "us-docker.pkg.dev/cloudrun/container/hello"
 
+env-name = "ENV"
 
-size = "20"
-
-image-name = "ubuntu-2204-jammy-arm64-v20230919"
-
-startup-script = "startup-script file"
-
-email = "cli-service-account-1@playground-s-11-db36c73c.iam.gserviceaccount.com"
+value = "dev"

@@ -66,7 +66,7 @@ jobs:
         run: terraform plan
 
       - name: Terraform Apply 
-        run: terraform apply --auto-approve | awk '/^Outputs:$/,/^--$/ {block=block $0 RS} END {if (block) print block}' > output.txt       
+        run: terraform apply --auto-approve | awk '/^Outputs:/{outputFound=1; output=""; count=0} outputFound{output=output $0 ORS; count++} count==4{print output > "output.txt"; exit}'
       #run: terraform apply --auto-approve -var="project-id=${{ secrets.PROJECT_ID }}" -var="credentials=${{ secrets.CREDENTIAL }}" 
         
         
